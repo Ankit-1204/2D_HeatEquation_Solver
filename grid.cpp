@@ -10,4 +10,8 @@ class Grid{
      hx = (xmax-xmin)/(Nx+1);
      hy = (ymax-ymin)/(Ny+1);
   }
+
+  inline int idx(int i,int j)const {
+    return i+ (Ny*j);
+  }
 };
