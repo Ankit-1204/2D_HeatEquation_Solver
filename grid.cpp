@@ -16,4 +16,7 @@ class Grid{
   inline int idx(int i,int j)const {
     return i+ (stride*j);
   }
+  inline double x(int i) const { return xmin + i * hx; } // note: i=0..Nx+1 where i=0 is ghost at x0
+  inline double y(int j) const { return ymin + j * hy; }
 };
+
