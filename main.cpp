@@ -1,8 +1,8 @@
 #include <iostream>
-#include <field.cpp>
-#include <grid.cpp>
-#include <discretization.cpp>
-#include <cg_solver.cpp>
+#include "field.h"
+#include "grid.h"
+#include "discretization.h"
+#include "cg_solver.h"
 #include <cmath>
 
 using namespace std;
