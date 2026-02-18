@@ -7,9 +7,12 @@
             "args": [
                 "/Zi",
                 "/EHsc",
+                "/I", "D:/MPI_SDK/Include",
                 "/nologo",
                 "/Fe${fileDirname}\\${fileBasenameNoExtension}.exe",
-                "${file}"
+                "${file}",
+                "/LIBPATH:D:/MPI_SDK/Lib/x64",
+				"msmpi.lib"
             ],
             "options": {
                 "cwd": "${fileDirname}"

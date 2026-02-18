@@ -6,3 +6,7 @@
     - Homogenous and Non Homogeneous BC
     
 #### Current : Backward Euler, Matrix free, homogenous BC, implicit iterative (Conjugate Gradient);
+
+### ~~ Moving on to : Domain decomposition based parallelization~~
+
+### Shared memory parallelism using OpenMP
