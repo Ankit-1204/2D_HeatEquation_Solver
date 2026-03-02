@@ -31,7 +31,7 @@ void main(int argc, char** argv){
     auto g_top = [&](double x){
         return 0.0;};
 
-    // ezy initial condition
+    // Simple initial condition
     double cx = 0.5*(x0+x1), cy = 0.5*(y0+y1);
     double sigma = 0.08;
     for_interior(g, [&](int i,int j){
