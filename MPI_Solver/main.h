@@ -3,10 +3,11 @@
 #include <fstream>
 #include <cmath>
 #include <functional>
+#include <string>
 #include "grid.h"
 #include "field.h"
 #include "halo.h"
-#include "operators.h"
+#include "operator.h"
 #include "cg.h"
 
 using namespace std;
@@ -67,11 +68,11 @@ int main(int argc, char** argv) {
     int px = coords[0], py = coords[1];
 
     Neighbors nb;
-    MPI_Cart_shift(cart, 0, 1, &nb.left, &nb.right); // direction 0 -> x (left/right)
-    MPI_Cart_shift(cart, 1, 1, &nb.down, &nb.up);    // direction 1 -> y (down/up)
+    MPI_Cart_shift(cart, 0, 1, &nb.left, &nb.right); 
+    MPI_Cart_shift(cart, 1, 1, &nb.down, &nb.up);   
 
-    int gx = px * nx_loc; // how many interior points are to the left globally
-    int gy = py * ny_loc; // how many interior points are below globally
+    int gx = px * nx_loc; 
+    int gy = py * ny_loc; 
 
     double hx = (x1 - x0) / (Nx + 1);
     double hy = (y1 - y0) / (Ny + 1);
@@ -144,14 +145,14 @@ int main(int argc, char** argv) {
             }
         }
 
-        // Initial guess = u_old
+        // initial guess = u_old
         copy_local(lg, u_old, u_new);
         exchange_halo(cart, lg, u_new, nb);
 
         // Solve M * u_new = b
         CGResult cres = pcg_solve_mpi(cart, lg, nb,
                                       [&](const LocalGrid &L, const Field &x, Field &y) {
-                                          applyM(L, x, y); // assumes halos of x are set by pcg routine
+                                          applyM(L, x, y); 
                                       },
                                        nullptr,
                                       b, u_new, maxit, tol);
